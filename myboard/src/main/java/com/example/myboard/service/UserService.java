@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 
 import com.example.myboard.model.User;
-
 public interface UserService {		// interface : {}가 없고, 상속받은 곳에서 {}를 만들어줘야함
 	// 모든 항목 가져오기
 	List<User> getAllUser();			// List : 배열의 일종

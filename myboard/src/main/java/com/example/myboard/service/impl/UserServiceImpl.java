@@ -46,7 +46,5 @@ public class UserServiceImpl implements UserService{
 	public Page<User> findPaginated(int no, int totalNo) {
 		Pageable pageable = PageRequest.of(no-1, totalNo);			// -1해주는 이유 : 1페이지는 0번방에
 		return user.findAll(pageable);
-	}
-
-	
+	}	
 }
