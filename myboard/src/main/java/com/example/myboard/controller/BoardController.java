@@ -25,8 +25,8 @@ public class BoardController {
 
 	@GetMapping("/")		// localhost:8080/     로 이동하면 실행하는 함수
 	public String boardPage(Model model) {
-		//model.addAttribute("user", userService.getAllUser());
-		//return "index";		// index.html  로 이동
+//		model.addAttribute("user", userService.getAllUser());
+//		return "index";		// index.html  로 이동
 		return findPaginated(1, model);
 	}
 	
@@ -78,22 +78,20 @@ public class BoardController {
 		return "redirect:/";
 	}
 	
-	
-	//페이지 나누기
-	@GetMapping("/page/(pageNo)")
+	// 페이지 나누기S
+	@GetMapping("/page/{pageNo}")
 	public String findPaginated(@PathVariable (value="pageNo") int pageNo, Model model) {
-		//Getmapping : html의 href와 연결
-		//PathVariable : html의 URL에서 전달한 값을 받음
-		int pagesize = 7; //한 페이지에 보여주고 싶은 개수를 숫자로 입력
-		Page<User> page = userService.findPaginated(pageNo, pagesize);
-		List<User> listUSer = page.getContent();
+		// @GetMapping : html의 href와 연결
+		// @PathVariable : html의 URL에서 전달한 값을 받음
+		int pageSize = 5;		// 한 페이지에 보여주고 싶은 갯수를 숫자로 입력
+		Page<User> page = userService.findPaginated(pageNo, pageSize);
+		List<User> listUsers = page.getContent();
 		
 		model.addAttribute("currentPage", pageNo);
 		model.addAttribute("totalPages", page.getTotalPages());
 		model.addAttribute("totalItems", page.getTotalElements());
-		model.addAttribute("user", listUSer);
-		 
-		return "index";  //index.html 실행
+		model.addAttribute("user", listUsers);
+		
+		return "index";			// index.html 실행
 	}
-	
 }

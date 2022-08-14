@@ -20,5 +20,6 @@ class MyClass4 extends _09_AbstractClass{
 	@Override
 	public void you() {
 		//TODO Auto-generated method stub
+		
 	}
 }
